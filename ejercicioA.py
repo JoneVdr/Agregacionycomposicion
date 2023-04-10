@@ -36,6 +36,8 @@ class Ciudad:
         self.edificios.append(edificio)
     def __str__(self):
         return self.nombre
+    def destruir(self):
+        self.edificios = []
 
 class NewYork(Ciudad):
     def __init__(self):
@@ -60,4 +62,22 @@ class YooHoo(Empresa):
         self.agregar_edificio(self.edificio_a)
         self.agregar_edificio(self.edificio_b)
         self.agregar_edificio(self.edificio_c)
+
+class NewYorkDestruida(NewYork):
+    def __init__(self):
+        super().__init__()
+        self.edificios = []
+
+yoo_hoo = YooHoo()
+print(yoo_hoo)
+print(yoo_hoo.martin)
+print(yoo_hoo.salim)
+print(yoo_hoo.xing)
+print(yoo_hoo.edificio_a)
+print(yoo_hoo.edificio_b)
+print(yoo_hoo.edificio_c)
+
+new_york_destruida = NewYorkDestruida()
+yoo_hoo.edificio_a.ciudad = new_york_destruida
+yoo_hoo.edificio_b.ciudad = new_york_destruida
 
