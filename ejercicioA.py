@@ -3,6 +3,31 @@ Enunciado: modelar lo siguiente. Una empresa es propietaria de varios edificios 
 
 Una vez definidas estas entidades, imagine que su programa es una película estadounidense de catástrofes, en la que se destruye New York. Implemente este evento para que todas las entidades del juego tengan en cuenta las consecuencias de este cataclismo."""
 
+class Empresa:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.edificios = []
+        self.empleados = []
+    def agregar_edificio(self, edificio):
+        self.edificios.append(edificio)
+    def agregar_empleado(self, empleado):
+        self.empleados.append(empleado)
+    def __str__(self):
+        return self.nombre
+
+class Empleado:
+    def __init__(self, nombre):
+        self.nombre = nombre
+    def __str__(self):
+        return self.nombre
+
+class Edificio:
+    def __init__(self, nombre, ciudad):
+        self.nombre = nombre
+        self.ciudad = ciudad
+        ciudad.agregar_edificio(self)
+    def __str__(self):
+        return self.nombre
 class Ciudad:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -11,3 +36,28 @@ class Ciudad:
         self.edificios.append(edificio)
     def __str__(self):
         return self.nombre
+
+class NewYork(Ciudad):
+    def __init__(self):
+        super().__init__("New York")
+
+class LosAngeles(Ciudad):
+    def __init__(self):
+        super().__init__("Los Angeles")
+
+class YooHoo(Empresa):
+    def __init__(self):
+        super().__init__("YooHoo")
+        self.martin = Empleado("Martin")
+        self.salim = Empleado("Salim")
+        self.xing = Empleado("Xing")
+        self.edificio_a = Edificio("A", NewYork())
+        self.edificio_b = Edificio("B", NewYork())
+        self.edificio_c = Edificio("C", LosAngeles())
+        self.agregar_empleado(self.martin)
+        self.agregar_empleado(self.salim)
+        self.agregar_empleado(self.xing)
+        self.agregar_edificio(self.edificio_a)
+        self.agregar_edificio(self.edificio_b)
+        self.agregar_edificio(self.edificio_c)
+
