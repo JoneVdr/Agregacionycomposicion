@@ -6,3 +6,17 @@ Enunciado: comenzando con el mismo código que el ejercicio sobre herencia múlt
 Enunciado: modifique las clases Ventana y ParedCortina para que usen esta nueva clase-interfaz Cristal.
 
 Enunciado: modifique el código para que el programa funcione de nuevo."""
+
+class Ventana:
+    def __init__(self, ancho, alto):
+        self.ancho = ancho
+        self.alto = alto
+        self.cristal = Cristal()
+
+    def abrir(self):
+        self.cristal.abrir()
+
+    def cerrar(self):
+        self.cristal.cerrar()
+
+class ParedCortina:
